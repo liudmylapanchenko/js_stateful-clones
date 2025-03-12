@@ -10,17 +10,17 @@ function transformStateWithClones(state, actions) {
   let currentState = { ...state };
 
   function transformState(initialState, action) {
-    let transormedState = { ...initialState };
+    let transformedState = { ...initialState };
 
     if (action.type === 'addProperties') {
-      transormedState = { ...transormedState, ...action.extraData };
+      transformedState = { ...transformedState, ...action.extraData };
     } else if (action.type === 'removeProperties') {
-      action.keysToRemove.forEach((key) => delete transormedState[key]);
+      action.keysToRemove.forEach((key) => delete transformedState[key]);
     } else if (action.type === 'clear') {
       return {};
     }
 
-    return transormedState;
+    return transformedState;
   }
 
   return actions.map((action) => {
